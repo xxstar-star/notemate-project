@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteMate - 智能学习伴侣</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入图标库 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="notes-page">
+    
+    <div class="notes-app-container">
+        <!-- 左侧边栏 -->
+
+         <!-- 返回首页按钮 -->
+    <div class="back-to-home">
+        <button onclick="window.location.href = 'index.html';">
+            <i class="fas fa-arrow-left"></i> 返回首页
+        </button>
+    </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="app-logo">
+                    <i class="fas fa-book"></i>
+                    <span>NoteMate</span>
+                </div>
+                <div class="user-stats">
+                    <p>总计笔记: <span id="total-notes-count">0</span></p>
+                    <p>已收藏: <span id="starred-notes-count">0</span></p>
+                </div>
+            </div>
+
+            <!-- 搜索框 -->
+            <div class="search-section">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="global-search" placeholder="搜索笔记、标签...">
+                </div>
+            </div>
+
+            <!-- 导航菜单 -->
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-filter="all">
+                        <i class="fas fa-sticky-note"></i>
+                        <span>全部笔记</span>
+                    </li>
+                    <li class="nav-item" data-filter="starred">
+                        <i class="fas fa-star"></i>
+                        <span>收藏笔记</span>
+                    </li>
+                    <li class="nav-item" data-filter="recent">
+                        <i class="fas fa-clock"></i>
+                        <span>最近笔记</span>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 标签管理区域 -->
+            <div class="tags-section">
+                <div class="section-header">
+                    <h4>标签管理</h4>
+                    <button class="add-tag-btn" title="添加新标签">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="tags-list" id="tags-list">
+                    <!-- 标签会动态生成在这里 -->
+                    <div class="no-tags">暂无标签</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右侧主内容区 -->
+        <main class="main-content">
+            <!-- 顶部操作栏 -->
+            <header class="content-header">
+                <h2 id="content-title">全部笔记</h2>
+                <button class="new-note-btn" id="new-note-btn">
+                    <i class="fas fa-plus"></i> 新建笔记
+                </button>
+            </header>
+
+           <!-- 笔记编辑器（默认隐藏） -->
+<div class="note-editor" id="note-editor" style="display: none;">
+    <div class="editor-header">
+        <input type="text" id="note-title-input" placeholder="笔记标题...">
+        <div class="editor-actions">
+            <button class="save-btn" id="save-note-btn">
+                <i class="fas fa-save"></i> 保存
+            </button>
+            <button class="cancel-btn" id="cancel-note-btn">
+                <i class="fas fa-times"></i> 取消
+            </button>
+        </div>
+    </div>
+    
+    <textarea id="note-content-input" placeholder="开始记录你的想法..."></textarea>
+    
+    <div class="editor-footer">
+        <input type="text" id="note-tags-input" placeholder="添加标签（用逗号分隔）...">
+        <div class="editor-options">
+            <label class="star-checkbox">
+                <input type="checkbox" id="note-starred">
+                <i class="far fa-star"></i> 收藏
+            </label>
+        </div>
+    </div>
+</div>
+
+            <!-- 笔记列表 -->
+            <div class="notes-list" id="notes-list">
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h3>还没有任何笔记</h3>
+                    <p>点击"新建笔记"开始记录你的第一个想法</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 应该是这样 -->
+<script src="notes.js"></script>
+</body>
