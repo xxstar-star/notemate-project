@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteMate - 智能学习伴侣</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- 引入一个可爱的插图库 -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="portal-page">
+    <div class="portal-container">
+        <!-- 顶部Logo和标题 -->
+        <div class="portal-header">
+            <div class="logo-main">
+                <i class="fas fa-book"></i>
+                <h1>NoteMate</h1>
+            </div>
+            <p class="tagline">智能学习伴侣 · 让知识更有条理</p>
+        </div>
+
+        <!-- 功能卡片横向排列 -->
+        <div class="features-horizontal">
+            <!-- 笔记功能卡片 -->
+            <div class="feature-card-horizontal" onclick="navigateTo('notes.html')">
+                <div class="card-icon-horizontal">
+                    <i class="fas fa-sticky-note"></i>
+                </div>
+                <div class="card-content">
+                    <h3>我的笔记</h3>
+                    <p>记录学习笔记、代码片段、知识点总结，构建个人知识体系</p>
+                    <div class="card-stats">
+                        <span class="count" id="notes-count">0</span>
+                        <span class="label">条笔记</span>
+                    </div>
+                </div>
+                <button class="enter-btn">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- 错题功能卡片 -->
+            <div class="feature-card-horizontal" onclick="navigateTo('problems.html')">
+                <div class="card-icon-horizontal">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <div class="card-content">
+                    <h3>错题本</h3>
+                    <p>收集编程错题，分析错误原因，跟踪解决进度，避免重复犯错</p>
+                    <div class="card-stats">
+                        <span class="count" id="problems-count">0</span>
+                        <span class="label">道错题</span>
+                    </div>
+                </div>
+                <button class="enter-btn">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- 统计功能卡片 -->
+            <div class="feature-card-horizontal coming-soon">
+                <div class="card-icon-horizontal">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card-content">
+                    <h3>学习统计</h3>
+                    <p>可视化学习进度，分析知识掌握情况，生成学习报告</p>
+                    <div class="card-stats">
+                        <span class="count">-</span>
+                        <span class="label">项数据</span>
+                    </div>
+                </div>
+                <div class="coming-soon-badge">开发中</div>
+                <button class="enter-btn" disabled>
+                    <i class="fas fa-lock"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 可爱的插图区域 -->
+        <div class="portal-illustration">
+    <div class="miffy-container">
+        <div class="miffy">
+            <!-- 米菲兔头部 -->
+            <div class="miffy-head">
+                <!-- 耳朵 -->
+                <div class="miffy-ear left-ear"></div>
+                <div class="miffy-ear right-ear"></div>
+                <!-- 脸部 -->
+                <div class="miffy-face">
+                    <!-- 眼睛 -->
+                    <div class="miffy-eye left-eye"></div>
+                    <div class="miffy-eye right-eye"></div>
+                    <!-- 嘴巴 -->
+                    <div class="miffy-mouth"></div>
+                </div>
+            </div>
+        </div>
+        <div class="speech-bubble">一起来记录知识吧！</div>
+    </div>
+</div>
+        <!-- 页脚 -->
+        <footer class="portal-footer">
+            <p>东华大学 · 数据科学与大数据技术 · 计算机认知实践项目</p>
+        </footer>
+    </div>
+
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        // 页面加载时显示统计数据
+        document.addEventListener('DOMContentLoaded', function() {
+            // 笔记数量统计
+            const savedNotes = localStorage.getItem('notes');
+            if (savedNotes) {
+                const notes = JSON.parse(savedNotes);
+                document.getElementById('notes-count').textContent = notes.length;
+            }
+
+            // 错题数量统计
+            const savedProblems = localStorage.getItem('problems');
+            if (savedProblems) {
+                const problems = JSON.parse(savedProblems);
+                document.getElementById('problems-count').textContent = problems.length;
+            }
+        });
+    </script>
+</body>
+</html>
